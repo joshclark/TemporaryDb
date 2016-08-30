@@ -24,5 +24,5 @@ public class Program
 
 <hr>
 
-[![Build status](https://ci.appveyor.com/api/projects/status/g0k9pgiswxqd6lwq?svg=true)](https://ci.appveyor.com/project/joshclark/TemporaryDb) <a href="https://www.nuget.org/packages/TemporaryDb/"><img src="http://img.shields.io/nuget/v/TemporaryDb.svg?style=flat-square" alt="NuGet version" height="18"></a> 
+[![Build status](https://ci.appveyor.com/api/projects/status/qli3fwkqmmv7re4b?svg=true)](https://ci.appveyor.com/project/joshclark/TemporaryDb) <a href="https://www.nuget.org/packages/TemporaryDb/"><img src="http://img.shields.io/nuget/v/TemporaryDb.svg?style=flat-square" alt="NuGet version" height="18"></a> 
 
