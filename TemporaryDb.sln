@@ -1,0 +1,39 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{62A51940-D52D-4247-9160-3867AA9F54C8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{29E0E9C0-FF9E-42BA-989A-018F365ED0DE}"
+	ProjectSection(SolutionItems) = preProject
+		global.json = global.json
+	EndProjectSection
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TemporaryDb", "src\TemporaryDb\TemporaryDb.xproj", "{151A2A0A-0FB9-48E7-8A4A-EC57CAADC473}"
+EndProject
+Project("{8BB2217D-0F2D-49D1-97BC-3654ED321F3B}") = "TemporaryDb.Tests", "test\TemporaryDb.Tests\TemporaryDb.Tests.xproj", "{ECA2D15E-B5B6-4550-B233-7F5DEF74121D}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{151A2A0A-0FB9-48E7-8A4A-EC57CAADC473}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{151A2A0A-0FB9-48E7-8A4A-EC57CAADC473}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{151A2A0A-0FB9-48E7-8A4A-EC57CAADC473}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{151A2A0A-0FB9-48E7-8A4A-EC57CAADC473}.Release|Any CPU.Build.0 = Release|Any CPU
+		{ECA2D15E-B5B6-4550-B233-7F5DEF74121D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ECA2D15E-B5B6-4550-B233-7F5DEF74121D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ECA2D15E-B5B6-4550-B233-7F5DEF74121D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ECA2D15E-B5B6-4550-B233-7F5DEF74121D}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{151A2A0A-0FB9-48E7-8A4A-EC57CAADC473} = {62A51940-D52D-4247-9160-3867AA9F54C8}
+		{ECA2D15E-B5B6-4550-B233-7F5DEF74121D} = {62A51940-D52D-4247-9160-3867AA9F54C8}
+	EndGlobalSection
+EndGlobal
