@@ -10,7 +10,7 @@ namespace TemporaryDb.Tests
 {
     public class LocalDbDatabaseTests : IDisposable
     {
-        private string _databaseName = "mydb";
+        private string _databaseName = "mydb-with-dashes";
         private string _filename = "localdbFileName.mdf";
         private string _instanceName = "my_instance";
 
