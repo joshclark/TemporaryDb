@@ -53,7 +53,7 @@ namespace TemporaryDb
         {
             DropDatabase();
 
-            string createDatabase = $"CREATE DATABASE [{_databaseName}] ON PRIMARY (NAME={_databaseName}, FILENAME = '{_fileName}')";
+            string createDatabase = $"CREATE DATABASE [{_databaseName}] ON PRIMARY (NAME=[{_databaseName}], FILENAME = '{_fileName}')";
             using (var connection = new SqlConnection(MasterConnectionString))
             using (var command = new SqlCommand(createDatabase, connection))
             {
@@ -68,7 +68,7 @@ namespace TemporaryDb
             var deleteIfExists = $@"
 IF EXISTS(SELECT * FROM sys.databases where name = '{_databaseName}')
 BEGIN
-    ALTER DATABASE {_databaseName} SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+    ALTER DATABASE [{_databaseName}] SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
     DROP DATABASE [{_databaseName}]
 END";
             using (var connection = new SqlConnection(MasterConnectionString))
