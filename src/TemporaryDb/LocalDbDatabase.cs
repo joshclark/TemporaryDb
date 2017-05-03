@@ -1,4 +1,5 @@
-﻿using System.Data.SqlClient;
+﻿using System;
+using System.Data.SqlClient;
 using System.IO;
 
 namespace TemporaryDb
@@ -75,7 +76,17 @@ END";
             using (var command = new SqlCommand(deleteIfExists, connection))
             {
                 connection.Open();
-                command.ExecuteNonQuery();
+
+                try
+                {
+                    command.ExecuteNonQuery();
+                }
+                catch (Exception) when (!File.Exists(_fileName))
+                {
+                    // If the file does not exist, we might get an exception when 
+                    // dropping the database.  LocalDB still removes to database
+                    // from sys.databases, so let's just eat this error and move on...
+                }
             }
 
             if (File.Exists(_fileName))

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using Xunit;
 
@@ -178,6 +179,28 @@ namespace TemporaryDb.Tests
 
             Assert.False(DatabaseExist(_db.MasterConnectionString, _databaseName));
 
+            _db.DropDatabase();
+        }
+
+        [Fact]
+        public void DropDatabaseIgnoresErrorsWhenDataFileDoesNotExist()
+        {
+            var directory = Path.Combine(Path.GetTempPath(), Path.GetRandomFileName());
+            Directory.CreateDirectory(directory);
+
+            var filename = Path.Combine(directory, _filename);
+            _db = new LocalDbDatabase(_databaseName, filename);
+
+            _db.CreateDatabase();
+
+            // Let the filesystem let go of the file so it isn't in use.
+            Thread.Sleep(250);
+
+            Directory.Delete(directory, true);
+
+            _db = new LocalDbDatabase(_databaseName);
+
+            _db.CreateDatabase();
             _db.DropDatabase();
         }
 
