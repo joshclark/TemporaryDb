@@ -1,4 +1,4 @@
-#TemporaryDb
+# TemporaryDb
 
 This library can be used to create a temporary database that can be used for testing and then dropped once the tests are complete.  Currently, only LocalDb is supported.  The code attempts to connect to LocalDb on localhost.
 
@@ -14,7 +14,7 @@ public class Program
 {
     public static void Main(string[] args)
     {
-		using (var db = new TempLocalDb("testdb"))
+        using (var db = new TempLocalDb("testdb"))
         {
            UseTheDatabase(db.ConnectionString);
         }
