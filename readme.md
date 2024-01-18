@@ -1,4 +1,4 @@
-#TemporaryDb
+# TemporaryDb
 
 This library can be used to create a temporary database that can be used for testing and then dropped once the tests are complete.  Currently, only LocalDb is supported.  The code attempts to connect to LocalDb on localhost.
 
