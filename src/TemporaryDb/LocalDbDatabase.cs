@@ -1,6 +1,6 @@
 ﻿using System;
-using System.Data.SqlClient;
 using System.IO;
+using Microsoft.Data.SqlClient;
 
 namespace TemporaryDb
 {
@@ -25,7 +25,7 @@ namespace TemporaryDb
         /// <param name="fileName">The filename on disk for the database.  If this is not an absolute path, 
         /// the file will be relative to the current directory.  This defaults to the database name with a ".mdf" extension</param>
         /// <param name="instanceName">The LocalDB instance to use.  Defaults to "MSSQLLocalDB" if not specified. </param>
-        public LocalDbDatabase(string databaseName, string fileName = null, string instanceName = null)
+        public LocalDbDatabase(string databaseName, string? fileName = null, string? instanceName = null)
         {
             _databaseName = databaseName;
             _fileName = fileName ?? $"{databaseName}.mdf";

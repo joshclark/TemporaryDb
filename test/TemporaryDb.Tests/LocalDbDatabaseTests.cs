@@ -1,21 +1,18 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Data.SqlClient;
 using System.IO;
-using System.Linq;
 using System.Threading;
-using System.Threading.Tasks;
+using Microsoft.Data.SqlClient;
 using Xunit;
 
 namespace TemporaryDb.Tests
 {
     public class LocalDbDatabaseTests : IDisposable
     {
-        private string _databaseName = "mydb-with-dashes";
-        private string _filename = "localdbFileName.mdf";
-        private string _instanceName = "my_instance";
+        private readonly string _databaseName = "mydb-with-dashes";
+        private readonly string _filename = "localdbFileName.mdf";
+        private readonly string _instanceName = "my_instance";
 
-        private LocalDbDatabase _db;
+        private LocalDbDatabase? _db;
 
         public void Dispose()
         {

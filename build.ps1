@@ -15,8 +15,6 @@ $PSScriptFilePath = (Get-Item $MyInvocation.MyCommand.Path).FullName
 
 $SolutionRoot = Split-Path -Path $PSScriptFilePath -Parent
 
-$DOTNET = "dotnet"
-
 # Make sure we don't have a release folder for this version already
 $BuildFolder = Join-Path -Path $SolutionRoot -ChildPath "build";
 $ReleaseFolder = Join-Path -Path $BuildFolder -ChildPath "Releases\v$ReleaseVersionNumber$PreReleaseName";
@@ -26,32 +24,20 @@ if ((Get-Item $ReleaseFolder -ErrorAction SilentlyContinue) -ne $null)
     Remove-Item $ReleaseFolder -Recurse
 }
 
-# Set the version number in package.json
-$ProjectJsonPath = Join-Path -Path $SolutionRoot -ChildPath "src\TemporaryDb\project.json"
-(gc -Path $ProjectJsonPath) `
-    -replace "(?<=`"version`":\s`")[.\w-]*(?=`",)", "$ReleaseVersionNumber$PreReleaseName" |
-    sc -Path $ProjectJsonPath -Encoding UTF8
-# Set the copyright
+# Set the version number and copyright date in project file
 $DateYear = (Get-Date).year
-(gc -Path $ProjectJsonPath) `
-    -replace "(?<=`"copyright`":\s`")[\w\s�]*(?=`",)", "Copyright � Josh Clark $DateYear" |
-    sc -Path $ProjectJsonPath -Encoding UTF8
 
-# Build the proj in release mode
+$ProjectPath = Join-Path -Path $SolutionRoot -ChildPath "src\TemporaryDb\TemporaryDb.csproj"
 
-& $DOTNET restore "$ProjectJsonPath"
-if (-not $?)
-{
-    throw "The DOTNET restore process returned an error code."
-}
+[xml]$project = Get-Content -Path $ProjectPath
 
-& $DOTNET build "$ProjectJsonPath"
-if (-not $?)
-{
-    throw "The DOTNET build process returned an error code."
-}
+$project.Project.PropertyGroup.Version = "$ReleaseVersionNumber$PreReleaseName" 
+$project.Project.PropertyGroup.Copyright = "Copyright © Josh Clark $DateYear"
 
-& $DOTNET pack "$ProjectJsonPath" --configuration Release --output "$ReleaseFolder"
+$project.Save($ProjectPath)
+
+
+& dotnet pack --configuration Release --output "$ReleaseFolder"
 if (-not $?)
 {
     throw "The DOTNET pack process returned an error code."
