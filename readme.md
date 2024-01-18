@@ -14,7 +14,7 @@ public class Program
 {
     public static void Main(string[] args)
     {
-		using (var db = new TempLocalDb("testdb"))
+        using (var db = new TempLocalDb("testdb"))
         {
            UseTheDatabase(db.ConnectionString);
         }
